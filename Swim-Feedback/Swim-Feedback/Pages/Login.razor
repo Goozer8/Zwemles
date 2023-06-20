@@ -1,0 +1,32 @@
+﻿@page "/login"
+
+<div class="trans-header">
+</div>
+
+<div class="top-text login">
+        <h1>Inloggen</h1>
+        <h3>Vul hier jouw inlog gegevens in.</h3>
+</div>
+
+
+<EditForm EditContext="editContext" OnValidSubmit="@LoginUser">
+    <div class="input-group login">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="login-username">
+            <i class="fa-solid fa-user"></i>
+            <InputText class="input-primary" type="text" placeholder="E-mailadres" @bind-Value="loginForm.Email" />
+        </div>
+        <div class="login-password">
+            <i class="fa-solid fa-lock"></i>
+            <InputText class="input-primary" type="password" placeholder="Wachtwoord" @bind-Value="loginForm.Password" />
+        </div>
+        <a class="forgot-password" href="/forgot-password">Wachtwoord vergeten?</a>
+    </div>
+
+    <div class="footer-text login">
+        <button type="submit" class="btn-primary">Inloggen</button>
+        <a href="/register">Heb je nog geen account?</a>
+    </div>
+</EditForm>

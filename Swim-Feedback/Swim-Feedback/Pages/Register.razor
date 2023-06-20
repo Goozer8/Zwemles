@@ -1,0 +1,50 @@
+﻿@page "/register"
+
+<div class="trans-header">
+    <a class="btn-secondary" href="/login"><i class="fa-solid fa-chevron-left"></i> Ga terug</a>
+</div>
+
+<div class="top-text register">
+    <h1>Account aanmaken</h1>
+    <h3>Vul onderstaande gegevens in</h3>
+</div>
+
+<EditForm EditContext="editContext" OnValidSubmit="@CreateUserAsync">
+    <div class="input-group register">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="register-username">
+            <i class="fa-solid fa-user"></i>
+            <InputText class="input-primary" type="text" placeholder="E-mailadres" @bind-Value="registerForm.Email" />
+        </div>
+        <div class="register-password">
+            <i class="fa-solid fa-lock"></i>
+            <InputText class="input-primary" type="password" placeholder="Wachtwoord" @bind-Value="registerForm.Password" />
+        </div>
+        <div class="register-password-confirm">
+            <i class="fa-solid fa-lock"></i>
+            <InputText class="input-primary" type="password" placeholder="Wachtwoord bevestigen" @bind-Value="registerForm.ConfirmPassword" />
+        </div>
+        <div class="register-confirm-terms">
+            <InputCheckbox class="input-checkbox term-conditions" type="checkbox" @bind-Value="registerForm.IsTermsAndConditionsAccepted" />
+            <p>Ik ga akkoord met de <a class="terms-and-conditions" onclick="TogglePopup(event)">Algemene voorwarden</a></p>
+        </div>
+    </div>
+    <div class="footer-text register">
+        <button type="submit" class="btn-primary">Aanvragen</button>
+    </div>
+</EditForm>
+
+
+<div class="popup-container" onclick="ClosePopup(event)">
+    <div class="popup-content">
+        <!-- Your popup content here -->
+    </div>
+</div>
+
+
+
+
+
+

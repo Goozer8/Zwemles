@@ -1,0 +1,39 @@
+﻿@*@page "/student-select/{SwimClassId:long}/{Topic:string?}"*@
+@page "/student-select"
+
+@using Swim_Feedback.Data
+
+<AuthorizeView>
+<Authorized>
+<AuthorizeView Roles="Teacher, Admin">
+<Authorized Context="a">
+    <img src="assets/imgs/wireframe/student-select.png" />
+
+    <ul>
+        <li><a href="dashboard">Ga terug</a></li>
+        <li><a href="feedback">Noah</a></li>
+    </ul>
+
+    <div style="float: left">
+        @if (students == null)
+        {
+            <p>Loading...</p>
+        }
+        else
+        {
+            @foreach (Student student in students)
+            {
+                <button @onclick="() => SelectStudent(student.StudentId)">@student.Name</button>
+            }
+        }
+    </div>
+</Authorized>
+<NotAuthorized Context="a">
+<CNotAuthorized />
+</NotAuthorized>
+</AuthorizeView>
+</Authorized>
+<NotAuthorized>
+<CRedirect URI="login" />
+</NotAuthorized>
+</AuthorizeView>

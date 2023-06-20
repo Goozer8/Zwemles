@@ -1,0 +1,24 @@
+﻿@page "/stats/students"
+
+<AuthorizeView>
+<Authorized>
+<AuthorizeView Roles="Teacher, Admin">
+<Authorized Context="a">
+    <img src="assets/imgs/wireframe/stats/students.png" />
+
+    <ul>
+        <li><a href="dashboard">Ga terug</a></li>
+        <li><a href="stats/general">Algemeen</a></li>
+        <li><a href="stats/students">Student gegevens</a></li>
+        <li><a href="stats/swim-classes">Overzicht klassen</a></li>
+    </ul>
+</Authorized>
+<NotAuthorized Context="a">
+<CNotAuthorized />
+</NotAuthorized>
+</AuthorizeView>
+</Authorized>
+<NotAuthorized>
+<CRedirect URI="login" />
+</NotAuthorized>
+</AuthorizeView>

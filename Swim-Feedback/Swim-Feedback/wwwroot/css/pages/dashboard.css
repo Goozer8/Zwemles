@@ -1,0 +1,79 @@
+﻿.trans-header.dashboard {
+    background: #EDEDED;
+}
+
+.trans-header.dashboard {
+    position: relative;
+}
+
+.trans-header.dashboard h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.dashboard-container {
+    margin-top: 35px;
+}
+
+input.input-primary.class-filter-class,
+input.input-primary.create-feedback-class {
+    width: 250px;
+}
+
+.container.create-feedback, 
+.container.class-filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper.create-feedback {
+    margin-top: 20px;
+}
+
+input.input-primary.class-filter-class,
+input.input-primary.create-feedback-class,
+input.input-primary.class-filter-subject,
+input.input-primary.create-feedback-subject {
+    margin: 30px 15px 0px 15px;
+    border: none;
+    padding-left: 10px;
+}
+
+.container.create-feedback > .input-wrapper.create-feedback > .input-primary.create-feedback-subject,
+.container.class-filter > .input-wrapper.class-filter > .input-primary.class-filter-subject {
+    width: 400px;
+}
+
+input.input-primary.class-filter-class,
+input.input-primary.create-feedback-class {
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+button.btn-primary.filter-class-search,
+button.btn-primary.create-feedback-next {
+    width: 120px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.dashboard-statistics-wrapper {
+    margin: 15px
+}
+
+.statistics-text-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+i.fa-solid.fa-magnifying-glass {
+    font-size: 40px;
+    color: #0076ff;
+}
+
+
+
+

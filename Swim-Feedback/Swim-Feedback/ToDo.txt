@@ -1,0 +1,5 @@
+﻿Authenticatie(ASP.NEt.CoreIdentity)
+Email Service( Admin account kan alleen wachtwoord veranderen)
+AVG Functies's
+
+Meating zonder berkay. vragen of hij nog vragen voor de klant heeft. hij stelt zijn vraag maar verder niet.

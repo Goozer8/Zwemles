@@ -1,0 +1,91 @@
+﻿@page "/dashboard"
+
+<AuthorizeView>
+<Authorized>
+<AuthorizeView Roles="Teacher, Admin">
+<Authorized Context="a">
+                <div class="trans-header dashboard">
+                    <a class="btn-secondary" href="/login"><i class="fa-solid fa-chevron-left"></i> Uitloggen</a>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="container dashboard-container">
+                    <div class="row">
+                        <div class="container col-sm col-6" style="background: #EDEDED">
+                            <div class="dashboard-statistics-wrapper">
+                                <div class="statistics-text-icon">
+                                    <h2>Statistieken</h2>
+                                    <a href="/statistics">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </div>
+                                <h4>Bekijk hier de veschillende statistieken.</h4>
+
+                                @if (topics != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="topic-filter">Onderwerp:</label>
+                                        <select id="topic-filter" @onchange="TopicChanged">
+                                            <option id="None">Geen</option>
+                                            @foreach (string topic in topics)
+                                            {
+                                                <option id='@topic.Replace(" ", "-")'>@topic</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
+
+                                <canvas id="score-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="col-1">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="wrapper class-filter">
+                                <h2>Klassen keuze</h2>
+                                <h4>Hieronder kun je kiezen welke klas je wilt gaan bekijken.</h4>
+                                <div class="container class-filter" style="background: #EDEDED">
+                                    <div class="input-wrapper class-filter">
+                                        <input type="text" class="input-primary class-filter-subject" placeholder="Onderwerp" />
+                                        <i class="fa-solid fa-circle-info class-choice-hover"></i>
+                                    </div>
+
+                                    <div class="input-wrapper search-button">
+                                        <input type="text" class="input-primary class-filter-class" placeholder="Klas" />
+                                        <button class="btn-primary filter-class-search">Zoeken</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="wrapper create-feedback">
+                                <h2>Aanmaken van feedback</h2>
+                                <h4>Hieronder kun je kiezen voor welke klas en welk onderwerp je feedback wilt ontvangen.</h4>
+                                <div class="container create-feedback" style="background: #EDEDED">
+                                    <div class="input-wrapper create-feedback">
+                                        <input type="text" class="input-primary create-feedback-subject" placeholder="Onderwerp" />
+                                        <i class="fa-solid fa-circle-info create-feedback-hover"></i>
+                                    </div>
+
+                                    <div class="input-wrapper search-button">
+                                        <input type="text" class="input-primary create-feedback-class" placeholder="Klas" />
+                                        <button class="btn-primary create-feedback-next">Verder</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</Authorized>
+<NotAuthorized Context="a">
+<CNotAuthorized />
+</NotAuthorized>
+</AuthorizeView>
+</Authorized>
+<NotAuthorized>
+<CRedirect URI="login" />
+</NotAuthorized>
+</AuthorizeView>

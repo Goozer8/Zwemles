@@ -1,0 +1,70 @@
+﻿@page "/admin-dashboard"
+
+@using Swim_Feedback.Data
+@using Microsoft.AspNetCore.Identity
+
+<AuthorizeView>
+<Authorized>
+<AuthorizeView Roles="Admin">
+<Authorized Context="a">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            @if (users != null)
+                            {
+                                <ul class="list-group">
+                                    @foreach (IdentityUser user in users)
+                                    {
+                                        <li class="list-group-item @(selectedUser?.Id == user.Id ? "active" : "")" @onclick="() => SetSelectedUser(user)">
+                                            @user.UserName
+
+                                            @foreach (IdentityRole role in roles)
+                                            {
+                                                <button style='background-color: @(userRoles.Any(Ur => Ur.UserId == user.Id && Ur.RoleId == role.Id) ? "green" : "red")'
+                                                @onclick="() => GiveUserRoleAsync(user, role)">
+                                                    @role.Name
+                                                </button>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                        <div class="col">
+                            <div>
+                                @if (adminLogs != null)
+                                {
+                                    <table id="log-table" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Datum</th>
+                                                <th>Bericht</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (AdminLog adminLog in adminLogs)
+                                            {
+                                                <tr>
+                                                    <td>@adminLog.Date.ToString("dd-MM-yy HH:mm")</td>
+                                                    <td>@adminLog.Message</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+
+                            <CChangePassword User="selectedUser" />
+                        </div>
+                    </div>
+                </div>
+</Authorized>
+<NotAuthorized Context="a">
+<CNotAuthorized />
+</NotAuthorized>
+</AuthorizeView>
+</Authorized>
+<NotAuthorized>
+<CRedirect URI="login" />
+</NotAuthorized>
+</AuthorizeView>

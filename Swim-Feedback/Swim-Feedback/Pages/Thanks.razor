@@ -1,0 +1,21 @@
+﻿@page "/thanks"
+
+<AuthorizeView>
+<Authorized>
+<AuthorizeView Roles="Teacher, Admin">
+<Authorized Context="a">
+    <img src="assets/imgs/wireframe/thanks.png" />
+
+    <ul>
+        <li><a href="student-select">Ga terug</a></li>
+    </ul>
+</Authorized>
+<NotAuthorized Context="a">
+<CNotAuthorized />
+</NotAuthorized>
+</AuthorizeView>
+</Authorized>
+<NotAuthorized>
+<CRedirect URI="login" />
+</NotAuthorized>
+</AuthorizeView>
